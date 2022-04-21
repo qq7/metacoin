@@ -1,6 +1,7 @@
 module.exports = {
   networks: {
     42: {
+      name: 'Kovan',
       addressUrl: 'https://dashboard.tenderly.co/contract/kovan/',
       txUrl: 'https://dashboard.tenderly.co/tx/kovan/',
       // addressUrl: 'https://kovan.etherscan.io/address/',
@@ -11,6 +12,7 @@ module.exports = {
       forwarder: '0x7eEae829DF28F9Ce522274D5771A6Be91d00E5ED'
     },
     3: {
+      name: 'Ropsten',
       addressUrl: 'https://dashboard.tenderly.co/contract/ropsten/',
       txUrl: 'https://dashboard.tenderly.co/tx/ropsten/',
       // addressUrl: 'https://ropsten.etherscan.io/address/',
@@ -21,6 +23,7 @@ module.exports = {
       forwarder: '0xeB230bF62267E94e657b5cbE74bdcea78EB3a5AB'
     },
     4: {
+      name: 'Rinkeby',
       addressUrl: 'https://dashboard.tenderly.co/contract/rinkeby/',
       txUrl: 'https://dashboard.tenderly.co/tx/rinkeby/',
       // addressUrl: 'https://rinkeby.etherscan.io/address/',

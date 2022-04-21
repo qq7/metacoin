@@ -12,7 +12,6 @@ import IPaymaster from '../../build/contracts/IPaymaster.json'
 import { networks } from './networks'
 
 const Gsn = require('@opengsn/provider')
-
 const RelayProvider = Gsn.RelayProvider
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
@@ -43,8 +42,8 @@ const App = {
         }
       }
       if (!network) {
-        const fatalmessage = document.getElementById('fatalmessage')
-        fatalmessage.innerHTML = "Wrong network. please switch to 'kovan' or 'ropsten' or 'rinkeby'"
+        const fatalmessage = document.getElementById('fatalmessage');
+        fatalmessage.innerHTML = `Wrong network. please switch to ${self.getNetworkLinks()} `
         return
       }
       console.log('chainid=', networkId, network)
@@ -147,7 +146,7 @@ const App = {
       const fatalmessage = document.getElementById('fatalmessage')
       console.log(e)
       if (/mismatch/.test(e)) {
-        fatalmessage.innerHTML = "Wrong network. please switch to 'kovan', 'rinekby', or 'ropsten' "
+        fatalmessage.innerHTML = `Wrong network. please switch to ${self.getNetworksList()}`
       }
       self.setStatus('Error getting balance; see log.')
     })
@@ -187,6 +186,18 @@ const App = {
       console.log(e)
       self.setStatus('Error sending coin; see log.')
     })
+  },
+
+  getNetworkLinks: () => {
+      let networkLinks = Object.keys(networks).map(x => (
+      `<a href="#"
+           onclick="
+             ethereum.request({
+             method: 'wallet_switchEthereumChain',
+             params: [{ chainId: '0x${Number(x).toString(16)}' }], // chainId must be in hexadecimal numbers
+            });"> ${networks[x].name}</a>`)
+      );
+      return networkLinks;
   }
 }
 
